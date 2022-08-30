@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import openCv as cvL
-import pymeshlab as pml
+#import pymeshlab as pml
 
 path = "imagens/teste.jpg"
 f_img = cv2.imread(path, cv2.IMREAD_COLOR)
