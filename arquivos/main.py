@@ -2,7 +2,7 @@ from cv2 import blur, boundingRect
 import pytesseract
 import cv2
 
-image = cv2.imread("imagens/stela.jpg")
+image = cv2.imread("imagens/teste.jpg")
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("temp/1teste_gray.png", gray)
 
@@ -21,7 +21,7 @@ contorno = contorno[0] if len(contorno) == 2 else cents[1]
 contorno = sorted(contorno, key = lambda x: cv2.boundingRect(x)[0])
 for c in contorno:
     x, y, w, h = cv2.boundingRect(c)
-    if h > 100 and w > 100:
+    if h > 250 and w > 200:
         roi = image[y:y+h, x:x+h]
         cv2.imwrite("temp/6teste_roi.png", roi)
         cv2.rectangle(image, (x,y), (x+w, y+h), (36,255,12), 2)

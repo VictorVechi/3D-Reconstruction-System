@@ -1,0 +1,6 @@
+Configurar o mask
+
+aplicar a trackbar no codigo main
+fazer o recorte a partir da imagens com mascara
+
+https://techvidvan.com/tutorials/detect-objects-of-similar-color-using-opencv-in-python/
