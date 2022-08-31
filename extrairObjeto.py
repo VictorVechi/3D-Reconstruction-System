@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
 import openCv as cvL
-import pymeshlab as pml
+#import pymeshlab as pml
 
-path = "imagens/teste.jpg"
+path = "imagens/schin.jpg"
 f_img = cv2.imread(path, cv2.IMREAD_COLOR)
 f_img = cv2.resize(f_img, (640, 480))
 aux_img = f_img.copy()
