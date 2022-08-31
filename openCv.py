@@ -16,22 +16,13 @@ def getContours(img):
             objCor = len(approx)
             x, y, w, h = cv2.boundingRect(approx)
             #cv2.rectangle(imgContour, (x, y), (x+w, y+h), (0,0,0), 2)
-            if objCor == 3:
-                cv2.putText(imgContour, "Triangulo",  
-                        (x+(w//2)-15, y+(h//2)-15), cv2.FONT_HERSHEY_COMPLEX, 0.5,  (0,0,0), 1)
             if objCor == 4:
                 cv2.putText(imgContour, "Quadrilatero",  
                         (x+(w//2)-15, y+(h//2)-15), cv2.FONT_HERSHEY_COMPLEX, 0.5,  (0,0,0), 1)
-            if objCor == 6:
-                cv2.putText(imgContour, "Hexagono",  
-                        (x+(w//2)-15, y+(h//2)-15), cv2.FONT_HERSHEY_COMPLEX, 0.5,  (0,0,0), 1)
-            if objCor >6:
-                cv2.putText(imgContour, "Circulo",  
-                        (x+(w//2)-15, y+(h//2)-15), cv2.FONT_HERSHEY_COMPLEX, 0.5,  (0,0,0), 1)
-
-
+           
+            
 #lê a imagem
-img = cv2.imread("img/teste.png")
+img = cv2.imread("imagens/schin.jpg")
 imgContour = img.copy()
 #Aplica filtro grayscale
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
