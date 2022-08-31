@@ -1,8 +1,7 @@
-Configurar o mask
-
-aplicar a trackbar no codigo main
-fazer o recorte a partir da imagens com mascara
-
-https://techvidvan.com/tutorials/detect-objects-of-similar-color-using-opencv-in-python/
 
 A gente ainda precisa disso?
+Acho que não
+
+https://github.com/Yuseung-Na/pcd2bin
+
+https://github.com/dimatura/pypcd

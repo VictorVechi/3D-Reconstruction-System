@@ -32,7 +32,7 @@ new_img = np.where(img!=0, img_fundo, img)
 new_img = ~new_img
 #cv2.imshow("Teste", new_img)
 
-# converte a imagen para niveis de cinza
+# converte a imagem para niveis de cinza
 normal = cv2.cvtColor(new_img, cv2.COLOR_BGR2GRAY)
 
 # dilata a imagem para remover os ruidos e ter a posição exata do objeto
