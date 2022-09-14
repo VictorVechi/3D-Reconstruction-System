@@ -2,6 +2,8 @@
 
 Repositório dedicado ao projeto de TCC desenvolvido para o curso técnico de informática do IFPR, usaremos ele para poder salvar arquivos seguindo uma linha cronológica para ficar organizado.
 
+**Objetivos**
+
 - [x] Integrar o sistema ao aparelho de captura de imagens RGB e nuvem de pontos do IFPR.
 - [x] Extrair a localização do objeto a partir de uma imagem.
 - [x] Utilizar a localização para filtrar os pontos de interesse dentro da nuvem
