@@ -11,6 +11,7 @@ Repositório dedicado ao projeto de TCC desenvolvido para o curso técnico de in
 - [x] Integrar o sistema ao aparelho de captura de imagens RGB e nuvem de pontos do IFPR.
 - [x] Extrair a localização do objeto a partir de uma imagem.
 - [x] Utilizar a localização para filtrar os pontos de interesse dentro da nuvem
+- [x] Utilizar as imagens para criar um mapa de textura do objeto
 - [ ] Utilizar os pontos para criar a malha 3D
 - [ ] Adicionar textura à malha formando o objeto final.
 - [ ] Salvar o objeto como um arquivo 3D.
