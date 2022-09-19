@@ -36,6 +36,7 @@ def mapping(descritores, pasta):
     angulos = []
     cima = []
     baixo = []
+    print("Obtendo mapa de textura")
     for i in descritores:
         path = "dataset/"+pasta+"/"+i['img']
         img = cv2.imread(path, cv2.IMREAD_COLOR)
@@ -67,5 +68,4 @@ def mapping(descritores, pasta):
 
     newPath = "dataset/"+pasta+"/"+pasta+"_textura.png"
     cv2.imwrite(newPath, stackedImages)
-    cv2.imshow("Texture map", stackedImages)
-    cv2.waitKey(0)
+    print("!!!.")
