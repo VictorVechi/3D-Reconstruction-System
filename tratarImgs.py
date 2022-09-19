@@ -45,11 +45,3 @@ def getContours(img, img2):
     x, y, w, h = cv2.boundingRect(cnt)
     cv2.rectangle(img2, (x, y), (x + w, y + h), (0, 0, 255), 1)
     return x, y, w, h, img2
-
-
-def showResultado(img, x, y, w, h):
-    imgCropped = img[y: y + h, x: x + w]
-    imgResult = np.zeros((480, 640, 3), np.uint8)
-    imgResult[y: y + h, x: x + w] = imgCropped
-    return imgResult
-    
