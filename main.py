@@ -1,7 +1,7 @@
 import buscarArquivo as search
 import tratarImgs as img2
 import mapaTextura as texture
-import ManipularPCD as features
+import manipularPCD as features
 
 name = input("Insira o nome da pasta (Obs: O nome também será usado para nomear o arquivo):\n")
 imgs, pcd = search.search(name)
