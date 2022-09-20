@@ -18,12 +18,7 @@ print("!!..")
 texture.mapping(descritores, name)
 
 print("Manipulando pcd")
-vertices = []
 for file in pcd:
     pontos = features.getPoints(file, name, descritores)
-    vertices.append(pontos)
-    #Provavelmente tem falhas
-
+    features.createObj(pontos, file)
 print("!!!!")
-
-#pcd.createObj(maiorx, menorx, maiory, menory)
