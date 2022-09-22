@@ -1,7 +1,7 @@
 import buscarArquivo as search
 import tratarImgs as img2
 import mapaTextura as texture
-import ManipularPCD as features
+import manipularPCD as features
 
 name = input("Insira o nome da pasta (Obs: O nome também será usado para nomear o arquivo):\n")
 imgs, pcd = search.search(name)
@@ -18,7 +18,10 @@ print("!!..")
 texture.mapping(descritores, name)
 
 print("Manipulando pcd")
+mediaGeral = []
 for file in pcd:
-    pontos = features.getPoints(file, name, descritores)
+    pontos, mediaFace = features.getPoints(file, name, descritores)
+    mediaGeral.append(mediaFace)
+    pontos = features.rotatePoints(pontos)
     features.createObj(pontos, file)
 print("!!!!")
