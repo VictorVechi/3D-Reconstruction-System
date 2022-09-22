@@ -1,14 +1,9 @@
 import numpy as np
+import calculos as calc
 from pyntcloud import PyntCloud as pcd
 
-def filterPoints(index, vertices):
-    if index >= 2:
-        i1 = vertices[index-1]
-        i2 = vertices[index-2]
-        diffX = i1[0] - i2[0]
-        diffY = i1[1] - i2[1]
-        if diffX < 0.0002 or diffY < 0.0002:
-            vertices.pop(index-1)
+CONST_MaiorZ = 0.913000047
+CONST_MenorZ = 0.719000041
 
 def filterValues(x1, y1, x2, y2):
     menorx = ((x1/7.391630)/100)+(-0.375560)
@@ -33,20 +28,32 @@ def getPoints(file, pasta, descritores):
             w = i['w']
             h = i['h']
     maiorx, menorx, maiory, menory = filterValues(x, y, x + w ,y + h)
+    mediaX = (maiorx+menorx)/2
+    mediaY = (maiory+menory)/2
+    dicto = {'ang': file, "x": mediaX, "y": mediaY}
 
     cloud = pcd.from_file(path)
     pontos = np.array(cloud.points)
     vertices = []
-    for i in pontos:
-        if i[0] > maiorx or i[0] < menorx or i[1] > maiory or i[1] < menory:
+    for i in pontos[::6, :]:
+        if i[0] > maiorx or i[0] < menorx or i[1] > maiory or i[1] < menory or i[2] < CONST_MenorZ or i[2] > CONST_MaiorZ:
             continue
         else:
             vertices.append(i)
-            #A função de filtrar ainda esta estranha
-            #Ele esta apagando pontos demais
-            #filterPoints(len(vertices), vertices)
             
-    return vertices
+    return vertices, dicto
+
+def rotatePoints(pontos):
+    sumY = 0
+    sumZ = 0
+    for i in pontos:
+        sumY += i[1]
+        sumZ += i[2]
+    midpointY = sumY/len(pontos)
+    midpointZ = sumZ/len(pontos)
+    pontos = calc.rotateY(midpointY, midpointZ, pontos)
+
+    return pontos 
 
 
 def createObj(vertices, file):
