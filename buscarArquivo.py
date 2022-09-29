@@ -21,5 +21,5 @@ def search(name):
         print("Pasta indicada inválida")
         exit()
     else:
-        print("!...")
+        print("!....")
         return imgs, pcd
