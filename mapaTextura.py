@@ -68,4 +68,4 @@ def mapping(descritores, pasta):
 
     newPath = "dataset/"+pasta+"/"+pasta+"_textura.png"
     cv2.imwrite(newPath, stackedImages)
-    print("!!!.")
+    print("!!!..")
