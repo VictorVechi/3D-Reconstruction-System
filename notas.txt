@@ -1,7 +1,0 @@
-
-A gente ainda precisa disso?
-Acho que não
-
-https://github.com/Yuseung-Na/pcd2bin
-
-https://github.com/dimatura/pypcd
