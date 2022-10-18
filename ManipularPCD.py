@@ -9,7 +9,7 @@ def filterValues(x1, y1, x2, y2):
     menorx = ((x1/7.391630)/100)+(-0.375560)
     maiorx = ((x2/7.391630)/100)+(-0.375560)
     menory = ((y1/7.391630)/100)+(-0.349560)
-    maiory = ((y2/7.391630)/100)+(-0.365560)
+    maiory = ((y2/7.391630)/100)+(-0.379560)
     return maiorx, menorx, maiory, menory
 
 def getPoints(file, pasta, descritores):
@@ -67,16 +67,3 @@ def corrigeOrientacao(vertices):
     mediaGeral = [mediaX, mediaY, mediaZ]
     n_vertices = calc.rotateX(mediaLocal, mediaGeral, n_pontos)
     return n_vertices
-
-
-def createObj(vertices, name):
-    print("Criando obj")
-    path = "obj/"+name+".obj"
-    meshfile = open(path, "w")
-    meshfile.write("# Reconstrução Leonardo e Victor\n")
-    meshfile.write("# IFPR - Campus Pinhais\n")
-    for i in vertices:
-        meshfile.write(f"v {i[0]} {i[1]} {i[2]}\n")
-        
-    meshfile.close()
-    print("!!!!!")
