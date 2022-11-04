@@ -1,5 +1,5 @@
 import numpy as np
-import calculos as calc
+import utils.calculos as calc
 from pyntcloud import PyntCloud as pcd
 
 CONST_MaiorZ = 0.813000047

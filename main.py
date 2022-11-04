@@ -1,16 +1,15 @@
-import datetime
-import buscarArquivo as search
-import tratarImgs as image
-import mapaTextura as texture
-import manipularPCD as features
-import malha as mesh
+import time
+import utils.buscarArquivo as search
+import utils.tratarImgs as image
+import utils.mapaTextura as texture
+import utils.manipularPCD as features
+import utils.malha as mesh
 
 #Inicia o programa pedindo o nome da pasta, que é buscado nos arquivos com a classe search
 name = input("Insira o nome da pasta (Obs: O nome também será usado para nomear o arquivo):\n")
 
 #Registra o tempo de início da reconstrução, para calcular o tempo empregado
-start = datetime.datetime.now()
-start = int(start.strftime("%S"))
+start = time.time()
 #Única função da classe, busca arquivos dentro da pasta com o nome indicado
 imgs, pcd = search.search(name)
 

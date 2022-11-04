@@ -8,7 +8,6 @@ Repositório dedicado ao projeto de TCC desenvolvido para o curso técnico de in
 
 **Objetivos**
 
-- [x] Integrar o sistema ao aparelho de captura de imagens RGB e nuvem de pontos do IFPR.
 - [x] Extrair a localização do objeto a partir de uma imagem.
 - [x] Utilizar a localização para filtrar os pontos de interesse dentro da nuvem
 - [x] Utilizar as imagens para criar um mapa de textura do objeto
@@ -27,4 +26,6 @@ A princípio, o sistema recebe uma pasta (que deve ser criada manualmente) que c
   <li>OpenCV-Python 4.6.0</li>
   <li>PyntCloud 0.3.1</li>
   <li>Numpy 1.23.1</li>
+  <li>Dataset de imagens</li>
+  <li>Dataset de nuvens de pontos</li>
 </ul>
