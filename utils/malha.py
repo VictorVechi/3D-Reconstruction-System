@@ -1,4 +1,4 @@
-import datetime
+import time
 import numpy as np
 
 def createMesh(vertices):
@@ -12,11 +12,9 @@ def createMesh(vertices):
     return faces
 
 def timeElapsed(start):
-    now = datetime.datetime.now()
-    now = int(now.strftime("%S"))
-    time = now - start
-    if time < 0: time+=60
-    return time
+    now = time.time()
+    tempo = now - start
+    return tempo
 
 def writeOBJ(vertices, faces, name, start):
     print("Escrevendo o objeto")
