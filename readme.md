@@ -13,7 +13,7 @@ Repositório dedicado ao projeto de TCC desenvolvido para o curso técnico de in
 - [x] Utilizar as imagens para criar um mapa de textura do objeto
 - [x] Utilizar os pontos para criar a malha 3D
 - [ ] Adicionar textura à malha formando o objeto final.
-- [ ] Salvar o objeto como um arquivo 3D.
+- [x] Salvar o objeto como um arquivo 3D.
 
 # Funcionamento
 
