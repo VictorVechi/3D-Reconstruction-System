@@ -69,6 +69,8 @@ class MainWindow(QMainWindow):
             path = easygui.diropenbox()
             name = self.input.getText(self, 'input dialog', 'Escreva o nome do arquivo para textura ')
             reconstruir.exec(path, name[0])
+            self.dialog.setText("Finalizado")
+            self.dialog.exec()
     def janelaCriarPasta(self):
         try:
             main.close()

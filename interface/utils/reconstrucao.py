@@ -1,4 +1,4 @@
-import datetime
+import time
 import utils.buscarArquivo as search
 import utils.tratarImgs as image
 import utils.mapaTextura as texture
@@ -8,8 +8,7 @@ import utils.malha as mesh
 #Inicia o programa pedindo o nome da pasta, que é buscado nos arquivos com a classe search
 def exec(path,name):
     #Registra o tempo de início da reconstrução, para calcular o tempo empregado
-    start = datetime.datetime.now()
-    start = int(start.strftime("%S"))
+    start = time.time()
     #Única função da classe, busca arquivos dentro da pasta com o nome indicado
     imgs, pcd = search.search(path)
 
@@ -52,3 +51,5 @@ def exec(path,name):
 
     #Escreve o novo objeto em um arquivo
     mesh.writeOBJ(f_vertices, faces, name, start)
+
+    print("Finalizado")
