@@ -1,5 +1,6 @@
 import time
 import numpy as np
+import os
 
 def createMesh(vertices):
     print("Gerando malha tridimensional\n")
@@ -19,9 +20,11 @@ def timeElapsed(start):
 def writeOBJ(vertices, faces, name, start):
     print("Escrevendo o objeto")
     time = timeElapsed(start)
+    
+    #print("Current working directory: {0}".format(os.getcwd()))
 
-    path = "obj/"+name+".obj"
-    meshfile = open(path, "w")
+    pasta = "obj/"+name+".obj"
+    meshfile = open(pasta, "w")
     meshfile.write("# Esse arquivo OBJ foi reconstruído por Leonardo e Victor\n")
     meshfile.write("# Projeto realizado pelo IFPR - Campus Pinhais\n")
     meshfile.write(f"# Tempo empregado: {time} segundos\n\n")

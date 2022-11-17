@@ -1,7 +1,7 @@
 def search(name):
     import os
 
-    path = "dataset/"+name
+    path = name
     imgs = []
     pcd = []
     print("Buscando arquivos")
@@ -9,7 +9,7 @@ def search(name):
         for file in files:
             f_type = file.split(".")
             if f_type[1] == "png":
-                tex = set("textura")
+                tex = set("TEXTURA")
                 intersect = tex.intersection(set(f_type[0]))
                 if len(intersect) == 6:
                     pass
@@ -22,4 +22,6 @@ def search(name):
         exit()
     else:
         print("!.....")
+        print(imgs)
+        print(pcd)
         return imgs, pcd

@@ -26,6 +26,8 @@ A princípio, o sistema recebe uma pasta (que deve ser criada manualmente) que c
   <li>OpenCV-Python 4.6.0</li>
   <li>PyntCloud 0.3.1</li>
   <li>Numpy 1.23.1</li>
+  <li>PyQt6 6.4.0</li>
+  <li>Easygui 0.98.3</li>
   <li>Dataset de imagens</li>
   <li>Dataset de nuvens de pontos</li>
 </ul>

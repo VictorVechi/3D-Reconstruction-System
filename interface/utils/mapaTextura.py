@@ -32,14 +32,14 @@ def stackImages(scale,imgArray):
         ver = hor
     return ver 
 
-def mapping(descritores, pasta):
+def mapping(descritores, path, name):
     angulos = []
     cima = []
     baixo = []
     print("Obtendo mapa de textura")
     for i in descritores:
-        path = "dataset/"+pasta+"/"+i['img']
-        img = cv2.imread(path, cv2.IMREAD_COLOR)
+        pasta = path+"/"+i['img']
+        img = cv2.imread(pasta, cv2.IMREAD_COLOR)
         imgCropped = img[i['y']: i['y'] + i['h'], i['x']: i['x'] + i['w']]
         angulos.append(imgCropped)
         b, g, r = imgCropped[5, i['w']//2]
@@ -66,6 +66,6 @@ def mapping(descritores, pasta):
     map = ([angulos[0], angulos[1], angulos[2], angulos[3]], [corCima, corCima, corBaixo, corBaixo])
     stackedImages = stackImages(2,map)
 
-    newPath = "dataset/"+pasta+"/"+pasta+"_textura.png"
+    newPath = path+"/"+name+"TEXTURA.png"
     cv2.imwrite(newPath, stackedImages)
     print("!!!...")

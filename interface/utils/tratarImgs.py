@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 def getImgs(name, file):
-    path = "dataset/"+name+"/"+file
+    path = name+"/"+file
     f_img = cv2.imread(path, cv2.IMREAD_COLOR)
     f_img = cv2.resize(f_img, (640, 480))
     aux_img = f_img.copy()

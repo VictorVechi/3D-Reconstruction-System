@@ -12,8 +12,8 @@ def filterValues(x1, y1, x2, y2):
     maiory = ((y2/7.391630)/100)+(-0.379560)
     return maiorx, menorx, maiory, menory
 
-def getPoints(file, pasta, descritores):
-    path = "dataset/"+pasta+"/"+file
+def getPoints(file, name, descritores):
+    path = name+"/"+file
 
     file = file.split(".")
     file = file[0].split("_")
