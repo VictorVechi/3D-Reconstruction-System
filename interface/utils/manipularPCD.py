@@ -32,7 +32,7 @@ def getPoints(file, name, descritores):
     cloud = pcd.from_file(path)
     pontos = np.array(cloud.points)
     vertices = []
-    for i in pontos[::6, :]:
+    for i in pontos[::25, :]:
         if i[0] > maiorx or i[0] < menorx or i[1] > maiory or i[1] < menory or i[2] < CONST_MenorZ or i[2] > CONST_MaiorZ:
             continue
         else:
