@@ -3,10 +3,25 @@ import shutil
 import sys
 import easygui
 from unittest.main import MAIN_EXAMPLES
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QLineEdit, QMessageBox, QMainWindow, QInputDialog
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QLineEdit, QMessageBox, QMainWindow, QInputDialog, QFileIconProvider
 import utils.reconstrucao as reconstruir
 app = QApplication(sys.argv)
 
+styleSheet = '''
+    QPushButton {
+        background-color:#55A38B; 
+        color:#FFFFFF;
+        border-radius: 20px;
+        font-size: 12pt;
+        letter-spacing: 1.5; 
+        font-weight: bold;
+        padding: 6px;
+    } 
+    QPushButton:hover{
+        border: 2px solid #000000;
+        background-color:#326153;
+    }
+'''
 
 class JanelaPasta(QWidget):
     def __init__(self):
@@ -15,12 +30,17 @@ class JanelaPasta(QWidget):
 
         self.resize(600,500)
         self.setFixedSize(600,500)
-        self.setWindowTitle("Criar Pasta para PCDS")
+        self.setWindowTitle("Criar Pasta")
 
         btn = QPushButton("Criar pasta",self)
-        btn.setGeometry(200,300,200,35)
-        btn.setStyleSheet('background-color:#55A38B; color:#FFFFFF')
+        btn.setGeometry(200,300,200,45)
+        btn.setStyleSheet(styleSheet)
         btn.clicked.connect(self.criarPasta)
+
+        voltar = QPushButton("Voltar",self)
+        voltar.setGeometry(10,10,100,45)
+        voltar.setStyleSheet(styleSheet)
+        voltar.clicked.connect(self.voltar)
         
         label = QLabel("Insira o nome da pasta:",self)
         label.adjustSize()
@@ -37,7 +57,12 @@ class JanelaPasta(QWidget):
             main.criar3d()
         except:
             print("Deu erro")
-
+    def voltar(self):
+        try:
+            main.show()
+            self.close()
+        except:
+            print("Erro ao voltar")
 
 
 class MainWindow(QMainWindow):  
@@ -50,18 +75,18 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Main")
 
         btn = QPushButton("Criar pasta",self)
-        btn.setGeometry(200,150,200,35)
-        btn.setStyleSheet('background-color:#55A38B; color:#FFFFFF')
+        btn.setGeometry(200,130,200,45)
+        btn.setStyleSheet(styleSheet)
         btn.clicked.connect(self.janelaCriarPasta)
 
         btn2 = QPushButton("Selecionar arquivos",self)
-        btn2.setGeometry(200,225,200,35) 
-        btn2.setStyleSheet('background-color:#55A38B; color:#FFFFFF')
+        btn2.setGeometry(200,225,200,45) 
+        btn2.setStyleSheet(styleSheet)
         btn2.clicked.connect(self.selecionarArquivos)
         
-        btn3 = QPushButton("Criar 3d",self)
-        btn3.setGeometry(200,300,200,35)
-        btn3.setStyleSheet('background-color:#55A38B; color:#FFFFFF')
+        btn3 = QPushButton("Reconstrução 3D",self)
+        btn3.setGeometry(200,320,200,45)
+        btn3.setStyleSheet(styleSheet)
         btn3.clicked.connect(self.criar3d)
     def criar3d(self):
             self.dialog.setText("Selecione o diretório dentro do dataset")
