@@ -1,2 +1,1 @@
-#ignorar o py cache
-*.__pycache__
+interface/utils/__pycache__
