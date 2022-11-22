@@ -47,9 +47,12 @@ def exec(path,name):
     print("!!!!..")
 
     #Faz associação dos pontos para criação das faces
-    faces = mesh.createMesh(f_vertices)
+    arestas, faces = mesh.createMesh(f_vertices)
+
+    #Faz aplicação do mapa de textura na malha
+    textureMap = texture.apply(vertices, descritores)
 
     #Escreve o novo objeto em um arquivo
-    mesh.writeOBJ(f_vertices, faces, name, start)
+    mesh.writeOBJ(f_vertices, arestas, faces, textureMap, name, start)
 
     print("Finalizado")

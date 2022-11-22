@@ -1,4 +1,5 @@
 import cv2
+import os
 import numpy as np
 
 def stackImages(scale,imgArray):
@@ -66,6 +67,55 @@ def mapping(descritores, path, name):
     map = ([angulos[0], angulos[1], angulos[2], angulos[3]], [corCima, corCima, corBaixo, corBaixo])
     stackedImages = stackImages(2,map)
 
-    newPath = path+"/"+name+"TEXTURA.png"
+    newPath = f"obj/{name}/{name}_textura.png"
+    caminho = os.path.exists(f"obj/{name}")
+    if caminho == False:
+        os.mkdir(f"obj/{name}")
     cv2.imwrite(newPath, stackedImages)
-    print("!!!...")
+    writeMTL(name)
+    print("!!!....")
+
+def apply(vertices, descritores):
+    print("Aplicando textura na malha")
+    textureMap = []
+    for pontos in vertices:
+        angValue = 0
+        for i in descritores:
+            name = i['img'].split(".")
+            name = name[0].split("_")
+            name = name[2]
+            if int(name) == pontos["ang"]:
+                x = i['x']
+                y = i['y']
+                w = i['w']
+                h = i['h']
+        for i in pontos["pontos"]:
+            #u é horizontal e v é vertical
+            u = int(((i[0]-(-0.375560))*100)*(7.391630))-x
+            v = int(((i[1]-(-0.375560))*100)*(7.391630))-y
+            if u < 0: u+= w
+            if v < 0: v+= h
+            if u > w: u = w
+            if v > h: v = h
+            vt = [((u/w)/4)+angValue, (v/h)/2]
+            textureMap.append(vt)
+        angValue += 0.25
+    print("!!!!!!.")
+    return textureMap
+
+def writeMTL(name):
+    file = "obj/"+name+"/"+name+".mtl"
+    meshfile = open(file, "w")
+    meshfile.write("# Arquivo de textura MTL\n")
+    meshfile.write("# Projeto realizado pelo IFPR - Campus Pinhais\n")
+    meshfile.write("# Material Count: 1\n\n")
+    meshfile.write(f"newmtl {name}_textura\n")
+    meshfile.write("Ns 225.000000\n")
+    meshfile.write("Ka 1.000000 1.000000 1.000000\n")
+    meshfile.write("Kd 0.800000 0.800000 0.800000\n")
+    meshfile.write("Ks 0.500000 0.500000 0.500000\n")
+    meshfile.write("Ke 0.000000 0.000000 0.000000\n")
+    meshfile.write("Ni 1.450000\n")
+    meshfile.write("d 1.000000\n")
+    meshfile.write("illum 2\n")
+    meshfile.write(f"map_Kd {name}_textura.png")
