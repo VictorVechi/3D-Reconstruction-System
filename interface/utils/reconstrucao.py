@@ -26,10 +26,6 @@ def exec(path,name):
     #Mapeamento de textura
     texture.mapping(descritores, path, name)
 
-    def reordena(n):
-        idx = n["ang"]	
-        return idx
-
     #Tratamento das nuvens de pontos
     print("Organizando nuvem de pontos")
     vertices = []
@@ -40,6 +36,10 @@ def exec(path,name):
         vertices.append(dicto)
 
     #Reordena os ângulos do objeto
+    def reordena(n):
+        idx = n["ang"]	
+        return idx
+
     vertices.sort(key = reordena)
 
     #Faz a junção dos ângulos do objeto para formar seu contorno
