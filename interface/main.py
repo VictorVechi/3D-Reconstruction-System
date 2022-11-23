@@ -97,8 +97,9 @@ class MainWindow(QMainWindow):
             self.dialog.exec()
             main.close()
             reconstruir.exec(path, name[0])
-            self.dialog.setText("Finalizado")
+            self.dialog.setText("Objeto reconstruído")
             self.dialog.exec()
+            os.startfile(f"../obj/{name[0]}/{name[0]}.obj")
     def janelaCriarPasta(self):
         try:
             main.close()
