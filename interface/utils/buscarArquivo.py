@@ -9,12 +9,7 @@ def search(name):
         for file in files:
             f_type = file.split(".")
             if f_type[1] == "png":
-                tex = set("TEXTURA")
-                intersect = tex.intersection(set(f_type[0]))
-                if len(intersect) == 6:
-                    pass
-                else:
-                    imgs.append(file)
+                imgs.append(file)
             elif f_type[1] == "pcd":
                 pcd.append(file)
     if len(imgs) == 0 or len(pcd) == 0:

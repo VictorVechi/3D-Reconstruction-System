@@ -43,5 +43,4 @@ def getContours(img, img2):
             max_area = area
 
     x, y, w, h = cv2.boundingRect(cnt)
-    cv2.rectangle(img2, (x, y), (x + w, y + h), (0, 0, 255), 1)
     return x, y, w, h, img2
