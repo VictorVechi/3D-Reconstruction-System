@@ -110,7 +110,6 @@ class MainWindow(QMainWindow):
             self.dialog.setText("O loop ira executar 8 vezes, para selecionar os arquivos necessários, 4 imagens e 4 pcds. Selecione o arquivo e em seguida o diretório")
             self.dialog.exec()
             for i in range(8):
-                self.dialog.exec()
                 path = easygui.fileopenbox()
                 path2 = easygui.diropenbox()
                 shutil.copy2(path, path2)
