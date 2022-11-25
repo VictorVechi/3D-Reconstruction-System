@@ -33,6 +33,10 @@ def stackImages(scale,imgArray):
         ver = hor
     return ver 
 
+def reordena(n):
+    idx = n["ang"]	
+    return idx
+
 def mapping(descritores, path, name):
     angulos = []
     cima = []
@@ -64,15 +68,18 @@ def mapping(descritores, path, name):
     corBaixo = np.zeros((512, 240, 3), np.uint8)
     corBaixo[:] = b//4, g//4, r//4
 
-    map = ([angulos[0], angulos[1], angulos[2], angulos[3]], [corCima, corCima, corBaixo, corBaixo])
+    angulos.sort(key = reordena)
+    #map = ([angulos[0]["img"], angulos[1]["img"], angulos[2]["img"], angulos[3]["img"]], [corCima, corCima, corBaixo, corBaixo])
+    map = ([corCima, corCima, corBaixo, corBaixo], [angulos[0]["img"], angulos[1]["img"], angulos[2]["img"], angulos[3]["img"]])
     stackedImages = stackImages(2,map)
 
-    newPath = f"obj/{name}/{name}_textura.png"
-    caminho = os.path.exists(f"obj/{name}")
+    newPath = f"obj/{pasta}/{pasta}_textura.png"
+    caminho = os.path.exists(f"obj/{pasta}")
     if caminho == False:
-        os.mkdir(f"obj/{name}")
+        os.mkdir(f"obj/{pasta}")
     cv2.imwrite(newPath, stackedImages)
-    writeMTL(name)
+    writeMTL(pasta)
+    
     print("!!!....")
 
 def apply(vertices, descritores):

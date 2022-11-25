@@ -2,7 +2,6 @@ import os
 import shutil
 import sys
 import easygui
-from unittest.main import MAIN_EXAMPLES
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QLineEdit, QMessageBox, QMainWindow, QInputDialog, QFileIconProvider
 import utils.reconstrucao as reconstruir
 app = QApplication(sys.argv)
@@ -99,7 +98,8 @@ class MainWindow(QMainWindow):
             reconstruir.exec(path, name[0])
             self.dialog.setText("Objeto reconstruído")
             self.dialog.exec()
-            os.startfile(f"../obj/{name[0]}/{name[0]}.obj")
+            os.startfile(f"obj\{name[0]}\{name[0]}.obj")
+            main.show()
     def janelaCriarPasta(self):
         try:
             main.close()
@@ -110,10 +110,11 @@ class MainWindow(QMainWindow):
         try:
             self.dialog.setText("O loop ira executar 8 vezes, para selecionar os arquivos necessários, 4 imagens e 4 pcds. Selecione o arquivo e em seguida o diretório")
             self.dialog.exec()
-            for i in range(8):
-                path = easygui.fileopenbox()
-                path2 = easygui.diropenbox()
-                shutil.copy2(path, path2)
+            if self.dialog.accept():
+                for i in range(8):
+                    path = easygui.fileopenbox()
+                    path2 = easygui.diropenbox()
+                    shutil.copy2(path, path2)
         except:
             print("me mama")
 def rodar():
