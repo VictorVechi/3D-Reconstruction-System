@@ -43,10 +43,14 @@ def mapping(descritores, path, name):
     baixo = []
     print("Obtendo mapa de textura")
     for i in descritores:
+        angle = i['img'].split(".")
+        angle = angle[0].split("_")
+        angle = angle[2]
+
         pasta = path+"/"+i['img']
         img = cv2.imread(pasta, cv2.IMREAD_COLOR)
         imgCropped = img[i['y']: i['y'] + i['h'], i['x']: i['x'] + i['w']]
-        angulos.append(imgCropped)
+        angulos.append({"ang": int(angle), "img": imgCropped})
         b, g, r = imgCropped[5, i['w']//2]
         cima.append([r, g, b])
         b, g, r = imgCropped[i['h']-1, i['w']//2]
@@ -73,12 +77,13 @@ def mapping(descritores, path, name):
     map = ([corCima, corCima, corBaixo, corBaixo], [angulos[0]["img"], angulos[1]["img"], angulos[2]["img"], angulos[3]["img"]])
     stackedImages = stackImages(2,map)
 
-    newPath = f"obj/{pasta}/{pasta}_textura.png"
-    caminho = os.path.exists(f"obj/{pasta}")
+    newPath = f"obj/{name}/{name}_textura.png"
+    caminho = os.path.exists(f"obj/{name}")
     if caminho == False:
-        os.mkdir(f"obj/{pasta}")
+        os.mkdir(f"obj/{name}")
     cv2.imwrite(newPath, stackedImages)
-    writeMTL(pasta)
+    writeMTL(name)
+    print("!!!....")
     
     print("!!!....")
 
