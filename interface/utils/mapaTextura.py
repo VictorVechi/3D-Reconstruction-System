@@ -33,16 +33,24 @@ def stackImages(scale,imgArray):
         ver = hor
     return ver 
 
+def reordena(n):
+    idx = n["ang"]	
+    return idx
+
 def mapping(descritores, path, name):
     angulos = []
     cima = []
     baixo = []
     print("Obtendo mapa de textura")
     for i in descritores:
+        angle = i['img'].split(".")
+        angle = angle[0].split("_")
+        angle = angle[2]
+
         pasta = path+"/"+i['img']
         img = cv2.imread(pasta, cv2.IMREAD_COLOR)
         imgCropped = img[i['y']: i['y'] + i['h'], i['x']: i['x'] + i['w']]
-        angulos.append(imgCropped)
+        angulos.append({"ang": int(angle), "img": imgCropped})
         b, g, r = imgCropped[5, i['w']//2]
         cima.append([r, g, b])
         b, g, r = imgCropped[i['h']-1, i['w']//2]
@@ -64,7 +72,9 @@ def mapping(descritores, path, name):
     corBaixo = np.zeros((512, 240, 3), np.uint8)
     corBaixo[:] = b//4, g//4, r//4
 
-    map = ([angulos[0], angulos[1], angulos[2], angulos[3]], [corCima, corCima, corBaixo, corBaixo])
+    angulos.sort(key = reordena)
+    #map = ([angulos[0]["img"], angulos[1]["img"], angulos[2]["img"], angulos[3]["img"]], [corCima, corCima, corBaixo, corBaixo])
+    map = ([corCima, corCima, corBaixo, corBaixo], [angulos[0]["img"], angulos[1]["img"], angulos[2]["img"], angulos[3]["img"]])
     stackedImages = stackImages(2,map)
 
     newPath = f"obj/{name}/{name}_textura.png"
@@ -73,6 +83,8 @@ def mapping(descritores, path, name):
         os.mkdir(f"obj/{name}")
     cv2.imwrite(newPath, stackedImages)
     writeMTL(name)
+    print("!!!....")
+    
     print("!!!....")
 
 def apply(vertices, descritores):

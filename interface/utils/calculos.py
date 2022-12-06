@@ -51,7 +51,6 @@ def correcaoPosition(pontos, bordas):
             vertices.append(i)
     return vertices
 
-
 def rotateY(midpointY, midPointZ, pontos):
 
     seno, cosseno = getCosSin(100)
