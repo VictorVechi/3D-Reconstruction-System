@@ -29,3 +29,6 @@ A princípio, o sistema recebe uma pasta (que deve ser criada manualmente) que c
   <li>Dataset de imagens</li>
   <li>Dataset de nuvens de pontos</li>
 </ul>
+
+![Objetos](https://user-images.githubusercontent.com/53799801/206076019-c7c85fa3-336d-4698-a357-6cea9f93b73b.png)
+
