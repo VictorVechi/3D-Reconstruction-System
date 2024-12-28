@@ -91,4 +91,8 @@ At first, the system receives a folder (which must be created manually) that con
 ![Objetos](https://user-images.githubusercontent.com/53799801/206076019-c7c85fa3-336d-4698-a357-6cea9f93b73b.png)
 </section>
 
-# &copy; Leonardo Salgado & Victor Vechi
+<!-- contributors -->
+<!-- /contributors -->
+
+---
+#### &copy; Leonardo Salgado & Victor Vechi
